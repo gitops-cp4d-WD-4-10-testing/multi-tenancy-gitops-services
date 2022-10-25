@@ -1,0 +1,18 @@
+apiVersion: discovery.watson.ibm.com/v1
+kind:  WatsonDiscovery
+metadata:
+  name: wd
+  namespace: cpd-instance
+  annotations:
+    oppy.ibm.com/disable-rollback: "true"
+  labels:
+    app.kubernetes.io/name: "discovery"
+    app.kubernetes.io/instance: wd
+spec:
+  license:
+    accept: true
+  blockStorageClass: {{ include "blockStorageClass" . }}
+  fileStorageClass: {{ include "fileStorageClass" . }}
+  shared:
+    deploymentType: Production
+  version: {{ include "cpdVersion" . }}
