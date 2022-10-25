@@ -15,4 +15,4 @@ spec:
   fileStorageClass: {{ include "fileStorageClass" . }}
   shared:
     deploymentType: Production
-  version: {{ include "cpd-version" . }}
+  version: {{ include "cpdVersion" . }}

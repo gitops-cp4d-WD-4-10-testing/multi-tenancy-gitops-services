@@ -6,6 +6,6 @@
     {{- .Values.blockStorageClass -}}
 {{- end -}}
 
-{{- define "cpd-version" -}}
-    {{- .Values.cpd-version -}}
+{{- define "cpdVersion" -}}
+    {{- .Values.cpdVersion -}}
 {{- end -}}

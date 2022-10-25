@@ -9,4 +9,4 @@ spec:
     license: Enterprise
   fileStorageClass: {{ include "fileStorageClass" . }}
   blockStorageClass: {{ include "blockStorageClass" . }}
-  version: {{ include "cpd-version" . }}
+  version: {{ include "cpdVersion" . }}
