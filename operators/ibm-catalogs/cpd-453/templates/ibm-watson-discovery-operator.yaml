@@ -1,0 +1,10 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  namespace: openshift-marketplace
+  name: ibm-watson-discovery-operator-catalog
+spec:
+  image: icr.io/cpopen/ibm-watson-discovery-operator-catalog@sha256:b6f8fefb6992131f6c9e1e9ccb7ffeabc8b34ae2dfc963b0c00e84752ec9c856
+  displayName: Watson Discovery
+  publisher: IBM
+  sourceType: grpc
