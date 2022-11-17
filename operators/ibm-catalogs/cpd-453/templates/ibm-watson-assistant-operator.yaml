@@ -1,0 +1,12 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: ibm-watson-assistant-operator-catalog
+spec:
+  displayName: IBM Watson Assistant Operator Catalog
+  publisher: IBM
+  sourceType: grpc
+  image: icr.io/cpopen/ibm-watson-assistant-operator-catalog@sha256:1ba0d24f0ef9e3e50f96e6fa72821db8b32a272af4429c30cb4499ed034dd433
+  updateStrategy:
+    registryPoll:
+      interval: 15m
