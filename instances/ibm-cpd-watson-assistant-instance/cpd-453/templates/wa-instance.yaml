@@ -1,0 +1,64 @@
+apiVersion: assistant.watson.ibm.com/v1
+kind: WatsonAssistant
+metadata:
+  name: wa
+  namespace: cpd-instance
+  annotations:
+    oppy.ibm.com/disable-rollback: "true"
+    oppy.ibm.com/log-default-level: "debug"
+    oppy.ibm.com/log-filters: ""
+    oppy.ibm.com/log-thread-id: "false"
+    oppy.ibm.com/log-json: "false"
+  labels:
+    app.kubernetes.io/managed-by: "Ansible"
+    app.kubernetes.io/name: "watson-assistant"
+    app.kubernetes.io/instance: wa
+    icpdsupport/ignore-on-nd-backup: "true"
+    velero.io/exclude-from-backup: "true"
+spec:
+  cluster:
+    dockerRegistryPrefix: ""
+    imagePullSecrets: []
+    blockStorageClass: { { include "blockStorageClass" . } }
+    fileStorageClass: { { include "fileStorageClass" . } }
+    storageClassName: { { include "blockStorageClass" . } } # If you use a different storage class, replace it with the appropriate storage class
+    type: private
+    name: pprd
+  cpd:
+    namespace: cpd-instance # Replace with the project where Cloud Pak for Data is installed. This value will most likely match metadata.namespace
+  datastores:
+    cos:
+      storageSize: "50Gi"
+    datagovernor:
+      elasticSearch:
+        storageSize: "50Gi"
+      etcd:
+        storageSize: "50Gi"
+      kafka:
+        storageSize: "50Gi"
+      zookeeper:
+        storageSize: "50Gi"
+    elasticSearch:
+      analytics:
+        storageSize: "50Gi"
+      store:
+        storageSize: "50Gi"
+    etcd:
+      storageSize: 50Gi
+    kafka:
+      storageSize: "50Gi"
+      zookeeper:
+        storageSize: "50Gi"
+    modelTrain:
+      postgres:
+        storageSize: "50Gi"
+      rabbitmq:
+        storageSize: "50Gi"
+    postgres:
+      storageSize: "50Gi"
+  labels: {}
+
+  languages:
+  license:
+    accept: true # Change to true if you accept the WA license terms
+  version: { { include "cpdVersion" . } }
